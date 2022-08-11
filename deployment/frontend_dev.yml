@@ -4,7 +4,6 @@ metadata:
   name: frontend-react-dev
   labels:
     app: frontend-react-dev
-    env: development
 spec:
   replicas: 2
   selector:

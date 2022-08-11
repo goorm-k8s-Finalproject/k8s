@@ -2,13 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nodeport-frontend-dev
-  labels:
-    env: development
 spec:
   type: NodePort
   selector:
-    app: frontend-react
-    env: development
+    app: frontend-react-dev
   ports:
   - protocol: TCP
     port: 80
