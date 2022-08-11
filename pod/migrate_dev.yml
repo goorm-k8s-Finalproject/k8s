@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: migrate-django
+  name: migrate-django-dev
   labels:
-    app: migrate-django
+    app: migrate-django-dev
+    env: development
 spec:
   containers:
-  - name: migrate-django
+  - name: migrate-django-dev
     image: yangju0411/backend:test
     #command: ["python", "manage.py", "makemigrations", "&&", "python", "manage.py", "migrate"]
     command: ["bash", "-c"]

@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-django-dev
+  labels:
+    app: backend-django-dev
+    env: development
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-django-dev
+  template:
+    metadata:
+      labels:
+        app: backend-django-dev
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - frontend-react
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: backend-django-dev
+        image: yangju0411/backend:test
+        ports:
+          - containerPort: 8000
+        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+        env:
+        - name: DJANGO_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: secret-backend-dev
+              key: DJANGO_DB_USER
+        - name: DJANGO_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secret-backend-dev
+              key: DJANGO_DB_PASSWORD
+        - name: TZ
+          valueFrom:
+            configMapKeyRef:
+              name: config-backend-dev
+              key: TZ
+        - name: DJANGO_DEBUG
+          valueFrom:
+            configMapKeyRef:
+              name: config-backend-dev
+              key: DJANGO_DEBUG
+        - name: DJANGO_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: config-backend-dev
+              key: DJANGO_DB_NAME
+        - name: DJANGO_DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: config-backend-dev
+              key: DJANGO_DB_HOST
+        - name: DJANGO_DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: config-backend-dev
+              key: DJANGO_DB_PORT
+        - name: DJANGO_ALLOWED_HOSTS
+          valueFrom:
+            configMapKeyRef:
+              name: config-backend-dev
+              key: DJANGO_ALLOWED_HOSTS

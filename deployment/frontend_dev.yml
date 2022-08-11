@@ -1,18 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-react
+  name: frontend-react-dev
   labels:
-    app: frontend-react
+    app: frontend-react-dev
+    env: development
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: frontend-react
+      app: frontend-react-dev
   template:
     metadata:
       labels:
-        app: frontend-react
+        app: frontend-react-dev
     spec:
       affinity:
         podAntiAffinity:
@@ -22,10 +23,10 @@ spec:
               - key: app
                 operator: In
                 values:
-                - frontend-react
+                - frontend-react-dev
             topologyKey: "kubernetes.io/hostname"
       containers:
-      - name: frontend-react
+      - name: frontend-react-dev
         image: yangju0411/frontend:test
         ports:
           - containerPort: 8080

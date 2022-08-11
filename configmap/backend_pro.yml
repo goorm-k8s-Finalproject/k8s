@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config-backend-dev
+  name: config-backend-pro
   namespace: default
   labels:
-    env: development
+    env: production
 data:
   TZ: Asia/Seoul
   DJANGO_DEBUG: "True"
