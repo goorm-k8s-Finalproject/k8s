@@ -26,7 +26,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: backend-django-dev
-        image: yangju0411/backend:test
+        image: yangju0411/backend:00000000
         ports:
           - containerPort: 8000
         command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
