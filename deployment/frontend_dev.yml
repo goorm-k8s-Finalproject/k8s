@@ -9,6 +9,10 @@ spec:
   selector:
     matchLabels:
       app: frontend-react-dev
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
   template:
     metadata:
       labels:
