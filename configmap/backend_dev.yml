@@ -6,7 +6,7 @@ metadata:
 data:
   TZ: Asia/Seoul
   DJANGO_DEBUG: "True"
-  DJANGO_DB_NAME: "postgres"
+  DJANGO_DB_NAME: "test"
   DJANGO_DB_HOST: "p2p-database.cq8pkahcjyds.ap-northeast-2.rds.amazonaws.com"
   DJANGO_DB_PORT: "5432"
   DJANGO_ALLOWED_HOSTS: "127.0.0.1,0.0.0.0,localhost,10.100.212.10"
