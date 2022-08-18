@@ -26,7 +26,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: frontend-react
-        image: yangju0411/frontend:test
+        image: yangju0411/frontend:latest
         ports:
           - containerPort: 8080
 

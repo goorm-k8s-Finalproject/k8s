@@ -27,7 +27,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: backend-django-pro
-        image: yangju0411/backend:test
+        image: yangju0411/backend:latest
         ports:
           - containerPort: 8000
         command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
@@ -42,6 +42,11 @@ spec:
             secretKeyRef:
               name: secret-backend-pro
               key: DJANGO_DB_PASSWORD
+         - name: DJANGO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: secret-backend-pro
+              key: DJANGO_SECRET_KEY
         - name: TZ
           valueFrom:
             configMapKeyRef:

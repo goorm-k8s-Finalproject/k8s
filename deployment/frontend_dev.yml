@@ -30,7 +30,14 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: frontend-react-dev
-        image: yangju0411/frontend:00000000
+        image: yangju0411/frontend:202208171038
         ports:
           - containerPort: 8080
+        env:
+        - name: REACT_APP_BACK_URL
+          valueFrom:
+            configMapKeyRef:
+              name: config-frontend-dev
+              key: REACT_APP_BACK_URL
+
 
